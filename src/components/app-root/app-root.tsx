@@ -11,15 +11,14 @@ export class AppRoot {
         vision:"",
     };
     async componentWillLoad(){
-        const response = await fetch("../../assets/lit-the-light.json");
+        const response = await fetch("/assets/lit-the-light.json");
         this.obj = await response.json();
+        // console.log(this.obj);
     }
   render() {
     return (
       <div> 
-            <script>
-                    console.log(this.obj);
-            </script>
+            <script>console.log(this.obj)</script>
             <div class="container-fluid mt-7">
               <div class="row mb-6">
                   <section class="col-lg-6 mb-lg-0 mb-5">
