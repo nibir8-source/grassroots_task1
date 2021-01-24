@@ -1,27 +1,24 @@
-import { Component, h } from '@stencil/core';
-
-var obj = {
-    name:"",
-    vision:"",
-};
-
-async function loadObject(){
-    const response = await fetch("../../assets/lit-the-light.json");
-    const data = await response.json();
-    console.log(data);
-    obj=data;
-}
+import { State, Component, h } from '@stencil/core';
 
 
 @Component({
   tag: 'app-root',
 })
 export class AppRoot {
+
+    @State() obj: any = {
+        name:"",
+        vision:"",
+    };
+    async componentWillLoad(){
+        const response = await fetch("../../assets/lit-the-light.json");
+        this.obj = await response.json();
+    }
   render() {
     return (
       <div> 
             <script>
-                    console.log(obj);
+                    console.log(this.obj);
             </script>
             <div class="container-fluid mt-7">
               <div class="row mb-6">
