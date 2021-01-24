@@ -13,21 +13,18 @@ export class AppRoot {
     async componentWillLoad(){
         const response = await fetch("/assets/lit-the-light.json");
         this.obj = await response.json();
-        // console.log(this.obj);
     }
   render() {
     return (
       <div> 
-            <script>console.log(this.obj)</script>
             <div class="container-fluid mt-7">
               <div class="row mb-6">
                   <section class="col-lg-6 mb-lg-0 mb-5">
                       <div class="tm-intro">
                           <h3 class="tm-title-gray mb-4">VISION AND MISSION</h3>
                           <hr class="mb-5 tm-hr"/>
-                          <p class="mb-5"></p>
-                          <p class="mb-5">You can download and use this template for your commercial purpose. Please do not re-distribute the template ZIP file on any template collection website.</p>
-                          <img src="/assets/img/biz-oriented-1.jpg" alt="Company Background Image" class="img-fluid tm-mb-3"/>
+                          <p class="mb-5">{this.obj.description}</p>
+                          <img src={this.obj.photos[4]} alt="Company Background Image" class="img-fluid tm-mb-3"/>
                       </div>
                   </section>
                   <section class="col-lg-6">

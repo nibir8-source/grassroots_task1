@@ -1,10 +1,21 @@
-import { Component, h } from '@stencil/core';
+import { Component, State, h } from '@stencil/core';
 
 
 @Component({
   tag: 'app-header',
 })
 export class AppRoot {
+  
+    @State() obj: any = {
+        name:"",
+        vision:"",
+    };
+    async componentWillLoad(){
+        const response = await fetch("/assets/lit-the-light.json");
+        this.obj = await response.json();
+    }
+
+
   render() {
     return (
       <div>
@@ -14,7 +25,7 @@ export class AppRoot {
                     <div class="col-12">
                         <div class="tm-logo">
                             <i class="fas fa-industry fa-5x mr-5"></i>
-                            <span class="text-uppercase tm-logo-text">Business Oriented</span>
+                            <span class="text-uppercase tm-logo-text">{this.obj.name}</span>
                         </div>
                     </div>
                 </div>
