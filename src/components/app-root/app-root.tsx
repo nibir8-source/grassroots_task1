@@ -17,67 +17,137 @@ export class AppRoot {
   render() {
     return (
       <div> 
+            <div id="parallax-1" class="parallax-window" data-parallax="scroll" data-image-src="/assets/img/biz-oriented-header.jpg">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="tm-logo">
+                                <img src={this.obj.logo.url} alt="Image" class="img-fluid tm-strategy-img"/>
+                                <span class="text-uppercase tm-logo-text">{this.obj.name}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tm-nav-container-outer">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12">
+                            <nav class="navbar navbar-expand-lg" id="tm-main-nav">
+                                <button class="navbar-toggler toggler-example" type="button" data-toggle="collapse" data-target="#navbar-nav" 
+                                    aria-controls="navbar-nav" aria-expanded="false" aria-label="Toggle navigation">
+                                    <span class="dark-blue-text"><i class="fas fa-bars"></i></span>
+                                </button>
+                                <div class="collapse navbar-collapse tm-nav" id="navbar-nav">
+                                    <ul class="navbar-nav ml-auto">
+                                        <li class="nav-item active">
+                                            <a class="nav-link tm-nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link tm-nav-link" href="/assets/pages/about.html">About</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link tm-nav-link" href="/assets/pages/contact.html">Contact</a>
+                                        </li>
+                                    </ul>                            
+                                </div>                        
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="container-fluid mt-7">
               <div class="row mb-6">
                   <section class="col-lg-6 mb-lg-0 mb-5">
                       <div class="tm-intro">
                           <h3 class="tm-title-gray mb-4">VISION AND MISSION</h3>
                           <hr class="mb-5 tm-hr"/>
-                          <p class="mb-5">{this.obj.description}</p>
-                          <img src={this.obj.photos[4]} alt="Company Background Image" class="img-fluid tm-mb-3"/>
+                          <p class="mb-5">{this.obj.vision} and our mission includes
+                          {this.obj.mission.map((value) => (
+                              <span> {value}, </span> 
+                          ))}
+                          </p>
+                          {/* <img src={this.obj.photos[4]} alt="Company Background Image" class="img-fluid tm-mb-3"/> */}
+                      </div>
+                      <div class="tm-intro">
+                          <h3 class="tm-title-gray mb-4">WHY YOUR HELP MATTERS</h3>
+                          <hr class="mb-5 tm-hr"/>
+                          <p class="mb-5">
+                            <ul>
+                                {this.obj.whyHelpMatters.map((value) => (
+                                    <li>{value.text}</li> 
+                                ))}
+                            </ul>
+                          </p>
+                      </div>
+                      <div class="tm-intro">
+                          <h3 class="tm-title-gray mb-4">WHY VOLUNTEER HERE</h3>
+                          <hr class="mb-5 tm-hr"/>
+                          <p class="mb-5">
+                            <ul>
+                                {this.obj.whyVolunteerHere.map((value) => (
+                                    <li>{value.text}</li> 
+                                ))}
+                            </ul>
+                          </p>
                       </div>
                   </section>
                   <section class="col-lg-6">
-                      <h3 class="tm-title-gray mb-4">New Focused Strategies</h3>
+                      <h3 class="tm-title-gray mb-4">CAUSES WE CARE ABOUT</h3>
                       <hr class="mb-5 tm-hr"/>
-                      <div class="tm-strategy-box mb-5">
-                          <img src="/assets/img/strategy-1.jpg" alt="Image" class="img-fluid tm-strategy-img"/>
-                          <div>
-                              <h4 class="tm-text-primary">Maecenas molestie varius ipsum</h4>
-                              <p class="tm-strategy-text">Quisque consectetur ipsum justo, sed posuere massa pretium nec. In scelerisque, odio et maximus feugiat, nisl libero porta turpis, quis imperdiet odio.</p>
-                          </div>
-                      </div>
-                      <div class="tm-strategy-box mb-5">
-                          <img src="/assets/img/strategy-2.jpg" alt="Image" class="img-fluid tm-strategy-img"/>
-                          <div>
-                              <h4 class="tm-text-primary">Etiam consequat placerat convallis</h4>
-                              <p class="tm-strategy-text">Fusce non diam vel diam egestas accumsan quis aliquam metus. Nulla porta ullamcorper mauris maximus feugiat. Donec ac tincidunt dui.</p>
-                          </div>
-                      </div>
-                      <div class="tm-strategy-box mb-5">
-                          <img src="/assets/img/strategy-3.jpg" alt="Image" class="img-fluid tm-strategy-img"/>
-                          <div>
-                              <h4 class="tm-text-primary">Aenean varius velit eu ligula</h4>
-                              <p class="tm-strategy-text">Suspendisse gravida, ipsum a gravida euismod, metus enim hendrerit ante, vel hendrerit sapien sem non nisl. Maecenas tempus risus ipsum.</p>
-                          </div>
+                      <div>
+                        {this.obj.sdg.map((value) => (
+                        <div class="tm-strategy-box mb-5">
+                            <img src={value.photo.url} alt="Image" class="img-fluid tm-strategy-img"/>
+                            <div>
+                                <h4 class="tm-text-primary">{value.name}</h4>
+                                <p class="tm-strategy-text">{value.description}</p>
+                            </div>
+                        </div>
+                        ))}
                       </div>
                   </section>
               </div>
+              <div class="row mb-6">
+                  <div>
+                    <h3 class="tm-title-gray mb-4">PRESS COVERAGE</h3>
+                    <hr class="mb-5 tm-hr"/>
+                  </div>
+              </div>
               <div class="row mb-7">
-                  <div class="col-lg-4 col-md-6">
+                  {this.obj.media.map((value) => (
+                      <div class="col-lg-4 col-md-6">
                       <div class="tm-bg-gray tm-box">
                           <div class="text-center mb-3">
-                              <i class="fas fa-cloud-sun fa-5x p-5"></i>
+                          <i class="fas fa-5x p-5"><img src={value.photo.url} alt="Image" class="img-fluid1 tm-strategy-img"/></i>
                           </div>
-                          <h4 class="tm-text-primary tm-h3 mb-5">Suspendisse at nunc leo</h4>
-                          <p>Phasellus malesuada aliquam arcu, et ultricies metus scelerisque id. Curabitur finibus ornare blandit. Donec a luctus nulla. Vivamus ac felis sapien.</p>
+                          <h4 class="tm-text-primary tm-h3 mb-5"><a href={value.link}>{value.name}</a></h4>
+                          <p>{value.publicationName}</p>
                       </div>
-                  </div>
-                  <div class="col-lg-4 col-md-6">
-                      <div class="tm-bg-gray tm-box">
-                          <div class="text-center mb-3">
-                              <i class="fas fa-spa fa-5x p-5"></i>
-                          </div>
-                          <h4 class="tm-text-primary tm-h3 mb-5">Etiam viverra elit vel efficitur</h4>
-                          <p>Nunc ultrices imperdiet orci, a ultrices orci luctus vel. Etiam consequat placerat convallis. Donec consequat consectetur est, eget pretium nisl.</p>
                       </div>
-                  </div>
-                  <div class="col-lg-4 col-md-6">
-                      <img src="/assets/img/biz-oriented-2.jpg" alt="Image" class="img-fluid"/>
-                      <div class="tm-box tm-box-s">
-                          <p class="tm-mb-5">Suspendisse gravida, ipsum a gravida euismod, metus enim hendrerit ante, vel hendrerit sapien sem non nisl. Maecenas tempus risus ipsum.</p>
-                      </div>
-                  </div>
+                  ))}
+              </div>
+              <div class="row mb-6">
+                <section class="col-lg-6">
+                    <h3 class="tm-title-gray mb-4">VOLUNTEER EXPERIENCE</h3>
+                    <hr class="mb-5 tm-hr"/>
+                    {this.obj.review.map((value) => (
+                        <div class="tm-strategy-box mb-5">
+                            <img src={value.volunteer.photo.url} alt="Image" class="img-fluid tm-strategy-img"/>
+                            <div>
+                                <h4 class="tm-text-primary">{value.name}</h4>
+                                <p class="tm-strategy-text">{value.feedback}</p>
+                            </div>
+                        </div>
+                    ))}
+                </section>
+                <section class="col-lg-6">
+                    <h3 class="tm-title-gray mb-4">PHOTOS</h3>
+                    <hr class="mb-5 tm-hr"/>
+                    {this.obj.photos.map((photo) => (
+                        <img src={photo} alt="Image" class="img-fluid1 tm-strategy-img"/>
+                    ))}
+                </section>
               </div>
           </div>
 
@@ -87,14 +157,51 @@ export class AppRoot {
                   <div class="row">
                       <div class="col-12">
                           <div class="tm-overlay tm-bg-white">
-                              <h4 class="tm-text-primary mb-5">Parallax Background Section</h4>
-                              <p class="mb-5">Suspendisse gravida, ipsum a gravida euismod, metus enim hendrerit ante, vel hendrerit sapien sem non nisl. Maecenas tempus risus ipsum.</p>
+                              {/* <h4 class="tm-text-primary mb-5">Parallax Background Section</h4>
+                              <p class="mb-5">Suspendisse gravida, ipsum a gravida euismod, metus enim hendrerit ante, vel hendrerit sapien sem non nisl. Maecenas tempus risus ipsum.</p> */}
                               <a href="contact.html" class="btn btn-primary">Contact Us</a>
                           </div>
                       </div>
                   </div>
               </div>
           </div>
+
+          <footer class="container-fluid">
+              <div class="row">
+                  <p class="col-lg-9 col-md-8 mb-5 mb-md-0">
+                      Copyright &copy; 2020 <span class="tm-text-primary">Business Oriented</span>
+                      - designed by <a rel="nofollow" target="_parent" href="https://templatemo.com" class="tm-link-primary">TemplateMo</a>
+                  </p>
+                  <div class="col-lg-3 col-md-4 text-right">
+                      <a rel="nofollow" target="_blank" href={this.obj.reachOut.facebook} class="tm-social-link">
+                          <i class="fab fa-facebook fa-2x tm-social-icon"></i>
+                      </a>
+                      <a href={this.obj.reachOut.twitter} class="tm-social-link">
+                          <i class="fab fa-twitter fa-2x tm-social-icon"></i>
+                      </a>
+                      <a href={this.obj.reachOut.linkedin} class="tm-social-link">
+                          <i class="fab fa-linkedin fa-2x tm-social-icon"></i>
+                      </a>
+                      <a href={this.obj.reachOut.youtube} class="tm-social-link">
+                          <i class="fab fa-youtube fa-2x tm-social-icon"></i>
+                      </a>
+                      <a href={this.obj.reachOut.instagram} class="tm-social-link">
+                          <i class="fab fa-instagram fa-2x tm-social-icon"></i>
+                      </a>
+                  </div>
+              </div>
+          </footer>
+          {/* <script src="/assets/js/jquery-3.4.1.min.js"></script>
+          <script src="/assets/js/bootstrap.min.js"></script>
+          <script src="/assets/js/parallax.min.js"></script>
+          <script src="/assets/js/tooplate-script.js"></script>
+  
+          <script>
+            $(document).ready(function () {
+                $('#parallax-1').parallax({ imageSrc: '/assets/img/biz-oriented-header.jpg' });
+                $('#parallax-2').parallax({ imageSrc: '/assets/img/biz-oriented-footer.jpg' });
+            });
+          </script> */}
       </div>
     );
   }
